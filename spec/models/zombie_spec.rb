@@ -25,5 +25,10 @@ describe Zombie do
     subject(:zombie) { Zombie.new(name: "Ash Clone 1") }
     its(:name) { should match(/Ash Clone/) }
   end
+  
+  it 'validates presence of name' do
+    zombie = Zombie.new(name: nil)
+    zombie.should validate_presence_of_name
+  end
 end
 
