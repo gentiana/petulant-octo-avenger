@@ -1,19 +1,13 @@
 require 'spec_helper'
 
 describe Zombie do
-  it 'is invalid without name' do
-    zombie = Zombie.new
-    zombie.should_not be_valid
-  end
+  it { should_not be_valid }
   
-  it 'has a name that natches "Ash Clone"' do
-    zombie = Zombie.new(name: "Ash Clone 1")
-    zombie.name.should match(/Ash Clone/)
-  end
+  it { should respond_to(:name) }
   
-  it 'responds to name' do
-    zombie = Zombie.new
-    zombie.should respond_to(:name)
+  context 'named Ash Clone' do
+    subject(:zombie) { Zombie.new(name: "Ash Clone 1") }
+    its(:name) { should match(/Ash Clone/) }
   end
 end
 
